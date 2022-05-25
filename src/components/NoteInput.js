@@ -25,11 +25,11 @@ function NoteInput() {
         addNote({
           content: task,
           date: format(new Date(), "yyy-MM-dd"),
-          id: uuidv4()
+          id: uuidv4(),
         })
       );
     }
-    setTask('');
+    setTask("");
   };
 
   return (
@@ -39,11 +39,11 @@ function NoteInput() {
         className="flex flex-col justify-between h-full gap-2 md:gap-12"
       >
         <textarea
-        maxLength={200}
+          maxLength={200}
           value={task}
           onChange={handleChange}
           placeholder="Today, I want to..."
-          className="h-full p-2 rounded-lg bg-green-100 text-zinc-900"
+          className="h-full p-2 rounded-lg bg-green-100 text-zinc-900 resize-none"
           type="text"
         />
         <div className="flex justify-between">

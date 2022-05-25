@@ -1,7 +1,7 @@
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 
-function Note({ id, content, date }) {
+function Note({ id, content, date, removeNote }) {
   return (
     <div
       id={id}
@@ -10,7 +10,7 @@ function Note({ id, content, date }) {
       <p className="h-max p-1 break-normal break-words">{content}</p>
       <div className="flex justify-between">
         <p>{date}</p>
-        <BsTrash className="text-2xl cursor-pointer transition hover:scale-110" />
+        <BsTrash onClick={()=>{removeNote(id)}} className="text-2xl cursor-pointer transition hover:scale-110" />
       </div>
     </div>
   );
