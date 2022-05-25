@@ -21,7 +21,6 @@ function Notes() {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       <NoteInput />
-      {console.log(query.length)}
       {!query.length > 0
         ? notes.map((note) => {
             return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateGlobalQuery } from "../features/appSlice";
+import { MdClear } from "react-icons/md";
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -17,13 +18,16 @@ function Search() {
   }, [dispatch, query]);
 
   return (
-    <input
+    <div className="flex items-center bg-zinc-300 rounded-lg">
+      <input
       type="text"
       placeholder="Search..."
-      className="bg-zinc-300 p-2 rounded-lg w-full outline-none transition focus:bg-zinc-400 focus:text-zinc-50"
+      className="bg-transparent p-2 rounded-lg w-full outline-none rounded-tr-none rounded-br-none transition focus:bg-zinc-400 focus:text-zinc-50"
       value={query}
       onChange={updateQuery}
     />
+    <MdClear onClick={()=>{setQuery('')}} className="cursor-pointer transition mr-4 m-2 text-2xl bg-zinc-50 rounded-full text-zinc-700 hover:scale-110 hover:text-zinc-500 " />
+    </div>
   );
 }
 
