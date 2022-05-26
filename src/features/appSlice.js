@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState= {
+  notes: [],
+  content: null,
+  date: null,
+  id: null,
+  query: "",
+}
+
 export const appSlice = createSlice({
   name: "app",
-  initialState: {
-    notes: [],
-    content: null,
-    date: null,
-    id: null,
-    query: '',
-  },
+  initialState: initialState,
   reducers: {
     addNote(state, action) {
       state.notes = [...state.notes, action.payload];
@@ -25,10 +27,17 @@ export const appSlice = createSlice({
     updateGlobalQuery(state, action) {
       state.query = action.payload.query;
     },
+    setNotes(state, action) {
+      state.notes = [...action.payload.notes];
+    },
+    setDefault(state, action) {
+      state = initialState;
+    },
   },
 });
 
-export const { addNote, removeNote, updateGlobalQuery } = appSlice.actions;
+export const { addNote, removeNote, updateGlobalQuery, setNotes, setDefault } =
+  appSlice.actions;
 
 export const selectNotes = (state) => [...state.app.notes];
 export const selectQuery = (state) => state.app.query;

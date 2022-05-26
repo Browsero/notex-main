@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { addNote } from "../features/appSlice";
-import { useDispatch } from "react-redux";
+import { addNote, selectNotes } from "../features/appSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function NoteInput() {
+  const [user] = useAuthState(auth);
   const [task, setTask] = useState("");
   const [charsLeft, setCharsLeft] = useState(200);
   const dispatch = useDispatch();
+  const notes = useSelector(selectNotes);
 
   const handleChange = (event) => {
     setTask(event.target.value);
@@ -20,14 +24,18 @@ function NoteInput() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newNote = {
+      content: task,
+      date: format(new Date(), "yyy-MM-dd"),
+      id: uuidv4(),
+    }
     if (charsLeft >= 0 && task.length > 0) {
       dispatch(
-        addNote({
-          content: task,
-          date: format(new Date(), "yyy-MM-dd"),
-          id: uuidv4(),
-        })
+        addNote(newNote)
       );
+      db.collection("users")
+        .doc(user.providerData[0].uid)
+        .update({ notes: [...notes, newNote] });
     }
     setTask("");
   };

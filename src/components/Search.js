@@ -18,7 +18,7 @@ function Search() {
   }, [dispatch, query]);
 
   return (
-    <div className="flex items-center bg-zinc-300 rounded-lg">
+    <div data-aos='fade-in' className="flex transition items-center bg-zinc-300 rounded-lg">
       <input
       type="text"
       placeholder="Search..."
@@ -26,7 +26,7 @@ function Search() {
       value={query}
       onChange={updateQuery}
     />
-    <MdClear onClick={()=>{setQuery('')}} className="cursor-pointer transition mr-4 m-2 text-2xl bg-zinc-50 rounded-full text-zinc-700 hover:scale-110 hover:text-zinc-500 " />
+   {query.length > 0 &&  <MdClear data-aos='zoom-in' onClick={()=>{setQuery('')}} className="cursor-pointer transition mr-4 m-2 text-2xl bg-zinc-50 rounded-full text-zinc-700 hover:scale-110 hover:text-zinc-500 " />}
     </div>
   );
 }
