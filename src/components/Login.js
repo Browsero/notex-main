@@ -81,12 +81,6 @@ function Login() {
           {!emailLogin ? (
             <div data-aos="fade-in" className="flex flex-col gap-6">
               <button
-                onClick={emailLoginHandler}
-                className="flex gap-2 items-center p-2 bg-purple-500 rounded-lg shadows-xl text-white transition hover:bg-purple-700"
-              >
-                <AiOutlineMail /> Sign in via E-Mail
-              </button>
-              <button
                 onClick={googleLoginHandler}
                 className="flex gap-2 items-center p-2 bg-red-500 rounded-lg shadows-xl text-white transition hover:bg-red-700"
               >
