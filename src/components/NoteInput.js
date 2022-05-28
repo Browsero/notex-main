@@ -41,7 +41,7 @@ function NoteInput() {
   };
 
   return (
-    <div className="bg-green-300 h-32 p-4 rounded-lg shadow-lg md:h-64">
+    <div className="bg-purple-300 h-32 p-4 rounded-lg shadow-lg md:h-64">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-between h-full gap-2 md:gap-12"
@@ -51,12 +51,12 @@ function NoteInput() {
           value={task}
           onChange={handleChange}
           placeholder="Today, I want to..."
-          className="h-full p-2 rounded-lg bg-green-100 text-zinc-900 resize-none"
+          className="h-full p-2 rounded-lg bg-purple-100 text-zinc-900 resize-none"
           type="text"
         />
         <div className="flex justify-between">
           <label>{charsLeft} Reamining</label>
-          <button>Save</button>
+          <button className="rounded-lg bg-violet-600 p-2 text-white w-32 transition duration-150 hover:bg-violet-500 hover:scale-105">Save</button>
         </div>
       </form>
     </div>

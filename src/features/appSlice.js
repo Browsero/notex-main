@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState= {
+const initialState = {
   notes: [],
   content: null,
   date: null,
   id: null,
   query: "",
-}
+};
 
 export const appSlice = createSlice({
   name: "app",
@@ -36,8 +36,13 @@ export const appSlice = createSlice({
   },
 });
 
-export const { addNote, removeNote, updateGlobalQuery, setNotes, setDefault } =
-  appSlice.actions;
+export const {
+  addNote,
+  removeNote,
+  updateGlobalQuery,
+  setNotes,
+  setDefault,
+} = appSlice.actions;
 
 export const selectNotes = (state) => [...state.app.notes];
 export const selectQuery = (state) => state.app.query;
