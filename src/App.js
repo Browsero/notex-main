@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import Login from "./components/Login";
+import Advanced from "./components/Markdown/Advanced";
+import Editor from "./components/Markdown/Editor";
 
 AOS.init({ once: true });
 
@@ -19,12 +21,12 @@ function App() {
       <Router>
         {user ? (
           <>
+            <Navbar />
             <Routes>
               <Route
                 path="/"
                 element={
                   <div className="flex  w-full mx-auto flex-col ">
-                    <Navbar />
                     <div className="p-8 mx-auto flex-col gap-16 flex md:w-1/2">
                       <div className="flex flex-col gap-4 w-full">
                         <h1
@@ -40,6 +42,8 @@ function App() {
                   </div>
                 }
               ></Route>
+              <Route path="/advanced" element={<Advanced />}></Route>
+              <Route path="/advanced/editor" element={<Editor />}></Route>
             </Routes>
           </>
         ) : (
