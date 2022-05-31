@@ -4,31 +4,39 @@ import Markdown from "react-remarkable";
 
 function Editor() {
   const [text, setText] = useState("");
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log(text);
+  }
+
   return (
-    <div className="w-full flex flex-col justify-center items-center mt-16 gap-12 lg:mt-0">
-      <div className="flex flex-col gap-16 lg:flex-row max-w-xs lg:max-w-none lg:w-full  lg:p-32">
-        <textarea
-          className="bg-zinc-200 resize-none p-8 h-96 w-full shadow-lg rounded-lg lg:mb-3 lg:w-1/2 lg:h-screen"
-          onChange={(event) => setText(event.target.value)}
-        />
-        <div className="lg:w-1/2 lg:max-w-1/2">
-          <DisplayContainer>
-            <Markdown source={text} />
-          </DisplayContainer>
+    <form onSubmit={submitHandler}>
+      <div className="w-full flex flex-col justify-center items-center mt-16 gap-12 lg:gap-0 lg:mt-0">
+        <div className="flex flex-col gap-16 lg:flex-row max-w-xs lg:max-w-none lg:w-full lg:p-8">
+          <textarea
+            className="bg-zinc-200 resize-none p-8 h-96 w-full shadow-lg rounded-lg lg:mb-3 lg:w-1/2 lg:h-screen"
+            onChange={(event) => setText(event.target.value)}
+          />
+          <div className="lg:w-1/2 lg:max-w-1/2">
+            <DisplayContainer>
+              <Markdown source={text} />
+            </DisplayContainer>
+          </div>
         </div>
+        <button className="bg-purple-500 p-4 w-max rounded-lg text-white font-medium mb-8">
+          Save me!
+        </button>
       </div>
-      <button className="bg-purple-500 p-4 w-max rounded-lg text-white font-medium mb-8">
-        Save me!
-      </button>
-    </div>
+    </form>
   );
 }
 
 export default Editor;
 
 const DisplayContainer = styled.div`
-    overflow-wrap: break-word;
-  @media screen and (min-width: 900px){
+  overflow-wrap: break-word;
+  @media screen and (min-width: 900px) {
     max-height: 100vh;
     overflow-y: scroll;
   }
