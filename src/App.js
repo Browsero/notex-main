@@ -29,12 +29,12 @@ function App() {
                   <div className="flex  w-full mx-auto flex-col ">
                     <div className="p-8 mx-auto flex-col gap-16 flex md:w-1/2">
                       <div className="flex flex-col gap-4 w-full">
-                        <h1
+                        <h2
                           data-aos="fade-left-in"
                           className="font-bold text-4xl"
                         >
                           Hello, {user.displayName}
-                        </h1>
+                        </h2>
                         <Search />
                       </div>
                       <Notes />

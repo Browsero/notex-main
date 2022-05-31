@@ -5,24 +5,33 @@ import Markdown from "react-remarkable";
 function Editor() {
   const [text, setText] = useState("");
   return (
-    <EditorContainer>
-      <div className="flex flex-col gap-16 h-96 lg:flex-row max-w-sm mx-auto mt-8 lg:max-w-none lg:h-full lg:mt-0 lg:w-3/4">
+    <div className="w-full flex flex-col justify-center items-center mt-16 gap-12 lg:mt-0">
+      <div className="flex flex-col gap-16 lg:flex-row max-w-xs lg:max-w-none lg:w-full  lg:p-32">
         <textarea
-          className="bg-zinc-200 resize-none p-8 h-3/4 shadow-lg rounded-lg  lg:h-screen lg:w-1/2"
+          className="bg-zinc-200 resize-none p-8 h-96 w-full shadow-lg rounded-lg lg:mb-3 lg:w-1/2 lg:h-screen"
           onChange={(event) => setText(event.target.value)}
         />
-        <div className="h-1/6 lg:w-1/2 lg:overflow-auto lg:max-h-screen break-words">
-          <Markdown source={text} />
+        <div className="lg:w-1/2 lg:max-w-1/2">
+          <DisplayContainer>
+            <Markdown source={text} />
+          </DisplayContainer>
         </div>
       </div>
-      
-    </EditorContainer>
+      <button className="bg-purple-500 p-4 w-max rounded-lg text-white font-medium mb-8">
+        Save me!
+      </button>
+    </div>
   );
 }
 
 export default Editor;
 
-const EditorContainer = styled.div`
+const DisplayContainer = styled.div`
+    overflow-wrap: break-word;
+  @media screen and (min-width: 900px){
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
   @media print {
     *,
     *:before,

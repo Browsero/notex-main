@@ -12,7 +12,7 @@ function Navbar() {
       <h1 className="md:ml-32">
         Note<span className="text-purple-500 font-bold">X</span>
       </h1>
-      <div className="gap-16 hidden md:flex">
+      <div className="gap-16 hidden lg:flex">
         <ul className="flex text-lg gap-16">
           <Link to='/'><li className="cursor-pointer text-zinc-600 transition duration-150 hover:text-color-zinc-700 hover:font-bold">Quick Notes</li></Link>
           <Link to='advanced'> <li className="cursor-pointer text-zinc-600 transition duration-150 hover:text-color-zinc-700 hover:font-bold">Advanced Notes</li></Link>
